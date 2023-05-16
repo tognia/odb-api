@@ -7,8 +7,8 @@ module.exports.getItem = async (event, context) => {
   const params = {
     TableName: 'ondebrief-dev', 
     Key: {
-      GSI2PK: 'GROUPS#fb5c87a2-1e19-4ab2-9934-fd1cb21eab3d#2023#group-stage',
-      GSI2SK: 'GROUP#TEAM#Dragon de Yaoundé'
+      PK: 'COMPETITION#0eb733be-3f65-4ec3-bdb4-5b6f58288309',
+      SK: 'COMPETITION#0eb733be-3f65-4ec3-bdb4-5b6f58288309'
     }
   };
   try {
