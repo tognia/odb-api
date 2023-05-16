@@ -1,0 +1,12 @@
+service: odb # Replace with your desired service name
+provider:
+  name: aws
+  runtime: nodejs14.x
+  profile: htognia
+functions:
+  getItem:
+    handler: handler.getItem
+    events:
+      - http:
+          path: getItem
+          method: get
