@@ -8,5 +8,14 @@ functions:
     handler: lambdas/getSingleCompetition.getItem
     events:
       - http:
-          path: getItem
+          path: getitem
+          method: Get
+          cors : true
+
+  getCompetitions:
+      handler: lambdas/getCompetitions.getItems
+      events:
+      - http:
+          path: getcompetitions
           method: get
+          cors: true
