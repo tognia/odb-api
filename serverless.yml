@@ -5,7 +5,7 @@ provider:
   profile: htognia
 functions:
   getItem:
-    handler: handler.getItem
+    handler: lambdas/getSingleCompetition.getItem
     events:
       - http:
           path: getItem
