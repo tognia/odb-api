@@ -8,7 +8,7 @@ functions:
     handler: lambdas/getSingleCompetition.getItem
     events:
       - http:
-          path: getitem
+          path: getitem/param1/param2
           method: Get
           cors : true
 
