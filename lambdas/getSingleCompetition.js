@@ -6,8 +6,8 @@ const dynamoDB = new AWS.DynamoDB.DocumentClient();
 module.exports.getItem = async (event, context) => {
   // let {param1, param2 } = event.pathParameters;
   // const { param1, param2 } = event.queryStringParameters;
-  let param1 = event.pathParameters.param1;
-  let param2 = event.pathParameters.param2;
+  let param1 = event.queryStringParameters.param1;
+  let param2 = event.queryStringParameters.param2;
   console.log(param1, param2);
   const params = {
     TableName: "ondebrief-dev",
