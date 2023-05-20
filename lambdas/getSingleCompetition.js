@@ -4,16 +4,13 @@ AWS.config.update({ region: "us-east-1" });
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
 module.exports.getItem = async (event, context) => {
-  // let {param1, param2 } = event.pathParameters;
-  // const { param1, param2 } = event.queryStringParameters;
-  let param1 = event.queryStringParameters.param1;
-  let param2 = event.queryStringParameters.param2;
-  console.log(param1, param2);
+  console.log("BYBYE 2023", event, JSON.stringify(event.pathParameters));
+  const competitionId = "COMPETITION#0eb733be-3f65-4ec3-bdb4-5b6f58288309";
+  console.log("ZONE DANGER", competitionId);
   const params = {
     TableName: "ondebrief-dev",
     Key: {
-      PK: param1,
-      SK: param2,
+      PK: competitionId,
     },
   };
   try {
@@ -30,4 +27,3 @@ module.exports.getItem = async (event, context) => {
   }
 };
 // PK: 'COMPETITION#0eb733be-3f65-4ec3-bdb4-5b6f58288309',
-// SK: 'COMPETITION#0eb733be-3f65-4ec3-bdb4-5b6f58288309'
