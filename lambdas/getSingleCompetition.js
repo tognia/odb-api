@@ -7,13 +7,13 @@ const dynamoDB = new AWS.DynamoDB.DocumentClient();
 module.exports.getItem = async (event) => {
   
   console.log("BYBYE 2023", event);
-  if (!event.pathParameters || !event.pathParameters.competitionId) {
+  if (!event.pathParameters || !event.pathParameters.competitionId.toString()) {
     // failed without an competitionId
     console.log("Region: ", AWS.config.region);
     return Responses._400({ message: "missing the competitionId from the path" });
   }
-  const competitionId = 'COMPETITION#0eb733be-3f65-4ec3-bdb4-5b6f58288309';
-  // let competitionId = event.pathParameters.competitionId;
+  // const competitionId = 'COMPETITION#0eb733be-3f65-4ec3-bdb4-5b6f58288309';
+  let competitionId = event.pathParameters.competitionId.toString();
   console.log("ZONE DANGER", competitionId);
   const params = {
     TableName: "ondebrief-dev",
