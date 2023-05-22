@@ -3,12 +3,13 @@ provider:
   name: aws
   runtime: nodejs14.x
   profile: htognia
+  
 functions:
   getItem:
     handler: lambdas/getSingleCompetition.getItem
     events:
       - http:
-          path: getitem/competitionId
+          path: getitem/{competitionId}
           method: Get
           cors: true
 

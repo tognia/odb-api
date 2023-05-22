@@ -3,13 +3,14 @@ const dynamoDB = new AWS.DynamoDB.DocumentClient();
 module.exports.getItems = async (event, context) => {
   const params = {
     TableName: "ondebrief-dev",
-    FilterExpression: "#type = :competitionValue",
-    ExpressionAttributeNames: {
-      "#type": "type",
-    },
-    ExpressionAttributeValues: {
-      ":competitionValue": competition,
-    },
+    Limit : 5
+    // FilterExpression: "#type = :competitionValue",
+    // ExpressionAttributeNames: {
+    //   "#type": "type",
+    // },
+    // ExpressionAttributeValues: {
+    //   ":competitionValue": competition,
+    // },
   };
   try {
     const result = await dynamoDB.scan(params).promise();
