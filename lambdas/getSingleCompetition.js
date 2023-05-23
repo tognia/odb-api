@@ -6,14 +6,9 @@ module.exports.getItem = async (event) => {
   if (!event.queryStringParameters || !event.queryStringParameters.competition) {
     console.log("Region: ", AWS.config.region);
   }
-  let competitionId = event.queryStringParameters?.id;
-  console.log("ZONE DANGER", competitionId);
+
   const params = {
     TableName: "ondebrief-dev",
-    // Key: {
-    //   PK: competitionId,
-    //   SK: competitionId
-    // },
     FilterExpression: '#id = :idValue',    
     ExpressionAttributeNames: {
                 '#id': 'id'
@@ -35,4 +30,4 @@ module.exports.getItem = async (event) => {
     };
   }
 };
-// PK: 'COMPETITION#0eb733be-3f65-4ec3-bdb4-5b6f58288309',
+
