@@ -5,22 +5,32 @@ const serverless = require("serverless-http");
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
 module.exports.getItem = async (event) => {
-  
-  console.log("BYBYE 2023", event);
-  if (!event.pathParameters || !event.pathParameters.competitionId.toString()) {
-    // failed without an competitionId
+  if (!event.queryStringParameters || !event.queryStringParameters.competition) {
     console.log("Region: ", AWS.config.region);
-    return Responses._400({ message: "missing the competitionId from the path" });
   }
   // const competitionId = 'COMPETITION#0eb733be-3f65-4ec3-bdb4-5b6f58288309';
-  let competitionId = event.pathParameters.competitionId.toString();
+  // let competitionId = JSON.stringify(event.pathParameters.competitionId);
+  let competitionId = event.queryStringParameters?.competition;
   console.log("ZONE DANGER", competitionId);
   const params = {
     TableName: "ondebrief-dev",
-    Key: {
-      PK: competitionId,
-      SK: competitionId
-    },
+    // Key: {
+    //   PK: competitionId,
+    //   SK: competitionId
+    // },
+    
+    KeyConditionExpression: '#id = :id',
+    // FilterExpression: '#status = :status',
+    ExpressionAttributeNames: {
+                '#id': 'id',
+                // '#status': 'status'
+            },
+    ExpressionAttributeValues: {
+                ':id': event.queryStringParameters?.competition,
+                // ':status': 'active'
+            }
+
+
   };
   try {
     const result = await dynamoDB.get(params).promise();

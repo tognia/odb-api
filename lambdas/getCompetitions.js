@@ -2,15 +2,15 @@ const AWS = require("aws-sdk");
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
 module.exports.getItems = async (event, context) => {
   const params = {
-    TableName: "ondebrief-dev",
-    Limit : 5
-    // FilterExpression: "#type = :competitionValue",
-    // ExpressionAttributeNames: {
-    //   "#type": "type",
-    // },
-    // ExpressionAttributeValues: {
-    //   ":competitionValue": competition,
-    // },
+    TableName: 'ondebrief-dev',
+    Limit : 5,
+    FilterExpression: '#TYPE = :competitionValue',
+    ExpressionAttributeNames: {
+      '#TYPE': 'competitionValue',
+    },
+    ExpressionAttributeValues: {
+      ':competitionValue': 'COMPETITION',
+    },
   };
   try {
     const result = await dynamoDB.scan(params).promise();
