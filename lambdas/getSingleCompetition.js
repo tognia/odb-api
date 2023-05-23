@@ -1,16 +1,12 @@
 const AWS = require("aws-sdk");
 AWS.config.update({ region: "us-east-1" });
-const serverless = require("serverless-http");
-
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
 module.exports.getItem = async (event) => {
   if (!event.queryStringParameters || !event.queryStringParameters.competition) {
     console.log("Region: ", AWS.config.region);
   }
-  // const competitionId = 'COMPETITION#0eb733be-3f65-4ec3-bdb4-5b6f58288309';
-  // let competitionId = JSON.stringify(event.pathParameters.competitionId);
-  let competitionId = event.queryStringParameters?.competition;
+  let competitionId = event.queryStringParameters?.id;
   console.log("ZONE DANGER", competitionId);
   const params = {
     TableName: "ondebrief-dev",
@@ -18,20 +14,19 @@ module.exports.getItem = async (event) => {
     //   PK: competitionId,
     //   SK: competitionId
     // },
-    
-    // KeyConditionExpression: '#id = :id',
+    FilterExpression: '#id = :idValue',    
     ExpressionAttributeNames: {
-                '#id': 'id',
+                '#id': 'id'
             },
     ExpressionAttributeValues: {
-                ':id': event.queryStringParameters?.competition,
+                ':idValue': event.queryStringParameters?.id,
             }
   };
   try {
-    const result = await dynamoDB.get(params).promise();
+    const result = await dynamoDB.scan(params).promise();
     return {
       statusCode: 200,
-      body: JSON.stringify(result.Item),
+      body: JSON.stringify(result.Items),
     };
   } catch (error) {
     return {
