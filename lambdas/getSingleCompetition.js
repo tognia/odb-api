@@ -19,18 +19,13 @@ module.exports.getItem = async (event) => {
     //   SK: competitionId
     // },
     
-    KeyConditionExpression: '#id = :id',
-    // FilterExpression: '#status = :status',
+    // KeyConditionExpression: '#id = :id',
     ExpressionAttributeNames: {
                 '#id': 'id',
-                // '#status': 'status'
             },
     ExpressionAttributeValues: {
                 ':id': event.queryStringParameters?.competition,
-                // ':status': 'active'
             }
-
-
   };
   try {
     const result = await dynamoDB.get(params).promise();
