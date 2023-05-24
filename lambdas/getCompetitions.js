@@ -9,7 +9,7 @@ module.exports.getItems = async (event, context) => {
     },
     ExpressionAttributeValues: {
       ':competitionValue': 'COMPETITION',
-    },
+    }
   };
   try {
     const result = await dynamoDB.scan(params).promise();

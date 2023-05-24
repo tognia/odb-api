@@ -6,10 +6,10 @@ provider:
   
 functions:
   getItem:
-    handler: lambdas/getSingleCompetition.getItem
+    handler: lambdas/getCompetition.getItem
     events:
       - http:
-          path: getitem
+          path: getcompetition
           method: Get
           cors: true
 
