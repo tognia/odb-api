@@ -12,6 +12,7 @@ functions:
           path: getcompetition
           method: Get
           cors: true
+          authorizer: authorizerFunc
 
   getCompetitions:
     handler: lambdas/getCompetitions.getItems
@@ -22,5 +23,6 @@ functions:
           cors: true
           authorizer: authorizerFunc
   authorizerFunc:
-    handler: authorizer/handler.authorizer
+    handler: authorizer/competitions.authorizer
+  
 
