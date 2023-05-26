@@ -1,4 +1,4 @@
-service: odb # Replace with your desired service name
+service: odb-api # Replace with your desired service name
 provider:
   name: aws
   runtime: nodejs14.x
@@ -20,3 +20,7 @@ functions:
           path: getcompetitions
           method: get
           cors: true
+          authorizer: authorizerFunc
+  authorizerFunc:
+    handler: authorizer/handler.authorizer
+
