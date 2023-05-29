@@ -5,20 +5,20 @@ provider:
   profile: htognia
   
 functions:
-  getItem:
-    handler: lambdas/getCompetition.getItem
+  competition:
+    handler: lambdas/competition.getItem
     events:
       - http:
-          path: getcompetition
+          path: competitions/{competitionId}
           method: Get
           cors: true
           authorizer: authorizerFunc
 
-  getCompetitions:
-    handler: lambdas/getCompetitions.getItems
+  competitions:
+    handler: lambdas/competitions.getItems
     events:
       - http:
-          path: getcompetitions
+          path: competitions
           method: get
           cors: true
           authorizer: authorizerFunc
