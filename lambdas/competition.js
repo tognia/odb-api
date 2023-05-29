@@ -3,7 +3,7 @@ AWS.config.update({ region: "us-east-1" });
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
 module.exports.getItem = async (event) => {
-  if (!event.pathParameters || !event.pathParameters.competitionId) {
+  if (!event.queryStringParameters || !event.queryStringParameters.id) {
     console.log("Region: ", AWS.config.region);
   }
 
@@ -14,7 +14,7 @@ module.exports.getItem = async (event) => {
                 '#id': 'id'
             },
     ExpressionAttributeValues: {
-                ':idValue': event.pathParameters?.competitionId,
+                ':idValue': event.queryStringParameters?.id,
             }
   };
   try {
