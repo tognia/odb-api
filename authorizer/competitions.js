@@ -25,7 +25,7 @@ module.exports.authorizer = async(event) => {
                                 "Action": "execute-api:Invoke", 
                                 "Resource": [
                                             //   `arn:aws:execute-api:us-east-1:150441806096:ymumz18hhl/dev/GET/competitions/${id}`,
-                                              "arn:aws:execute-api:us-east-1:150441806096:ymumz18hhl/dev/GET/competitions/",
+                                              "arn:aws:execute-api:us-east-1:150441806096:ymumz18hhl/dev/GET/competitions/*",
                                               "arn:aws:execute-api:us-east-1:150441806096:ymumz18hhl/dev/GET/competitions"
                                             ], 
                                 "Effect": `${permission}`
