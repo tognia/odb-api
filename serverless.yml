@@ -9,7 +9,7 @@ functions:
     handler: lambdas/competition.getItem
     events:
       - http:
-          path: competitions/detailsCompetition
+          path: competitions/{id}
           method: Get
           cors: true
           authorizer: authorizerFunc
