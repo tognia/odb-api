@@ -5,11 +5,7 @@ module.exports.authorizer = async(event) => {
 
     console.log('token', token);
 
-    // let id = event.pathParameters?.id;
-
-    // console.log('id 2023', id);
-    
-    
+  
     let permission = "Deny";
     if(token === "my-secret-token") {
     	permission = "Allow"
@@ -24,9 +20,8 @@ module.exports.authorizer = async(event) => {
                             {
                                 "Action": "execute-api:Invoke", 
                                 "Resource": [
-                                            //   `arn:aws:execute-api:us-east-1:150441806096:ymumz18hhl/dev/GET/competitions/${id}`,
-                                              "arn:aws:execute-api:us-east-1:150441806096:ymumz18hhl/dev/GET/competitions/*",
-                                              "arn:aws:execute-api:us-east-1:150441806096:ymumz18hhl/dev/GET/competitions"
+                                              "arn:aws:execute-api:us-east-1:150441806096:23x0jag7rg/dev/GET/competitions/*",
+                                              "arn:aws:execute-api:us-east-1:150441806096:23x0jag7rg/dev/GET/competitions"
                                             ], 
                                 "Effect": `${permission}`
                             }
@@ -34,5 +29,7 @@ module.exports.authorizer = async(event) => {
             }
         
     }
+    console.log("Permission", permission) ;
+
     return authResponse;
 };

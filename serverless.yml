@@ -3,6 +3,7 @@ provider:
   name: aws
   runtime: nodejs14.x
   profile: htognia
+  stage: v1
   
 functions:
   competition:
@@ -24,5 +25,5 @@ functions:
           authorizer: authorizerFunc
   authorizerFunc:
     handler: authorizer/competitions.authorizer
-  
+   
 
