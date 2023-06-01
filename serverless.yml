@@ -4,10 +4,10 @@ provider:
   runtime: nodejs14.x
   profile: htognia
   stage: ${opt:stage, 'dev'}
-  apiId: ${opt:apiId, 'ymumz18hhl'}
+  # apiId: ${opt:apiId, 'ymumz18hhl'}
   environment:
     STAGE: ${self:provider.stage}
-    API_ID: ${self:provider.apiId}
+    # API_ID: ${self:provider.apiId}
   
 functions:
   competition:
